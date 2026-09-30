@@ -393,6 +393,116 @@
           padding: 20px 16px;
         }
       }
+
+      /* =========================================================
+   PRO ANIMATION SYSTEM (Fast, Lightweight & Smooth)
+   ========================================================= */
+
+/* Define Keyframe Animations */
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardPop {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes chipScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Base Initial States & Entrance Timing */
+.profile-image {
+  animation: heroEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+h1 {
+  animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+  will-change: transform, opacity;
+}
+
+.title {
+  animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+  will-change: transform, opacity;
+}
+
+.description {
+  animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+  will-change: transform, opacity;
+}
+
+/* Social Links Animation Delay */
+.links a {
+  opacity: 0;
+  animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.links a:nth-child(1) { animation-delay: 0.25s; }
+.links a:nth-child(2) { animation-delay: 0.3s; }
+.links a:nth-child(3) { animation-delay: 0.35s; }
+
+/* Tech Stack Container Entrance */
+.tech-section {
+  animation: cardPop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
+  will-change: transform, opacity;
+}
+
+/* Fast Stagger for Tech Items Grid */
+.tech-item {
+  opacity: 0;
+  animation: chipScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Hardware-Accelerated Micro-Interactions on Hover */
+.tech-item, .links a, .theme-toggle {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease !important;
+}
+
+.tech-item:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+}
+
+.links a:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+}
     </style>
   </head>
 
@@ -740,6 +850,17 @@
 
         updateTheme();
       });
+
+      /* Auto-Stagger Animation Delays for Tech Items */
+document.addEventListener("DOMContentLoaded", () => {
+  const techItems = document.querySelectorAll(".tech-item");
+  const baseDelay = 0.42; // Starts right after the card appears
+  const step = 0.025;     // Ultra-fast step for responsive feel
+
+  techItems.forEach((item, index) => {
+    item.style.animationDelay = `${baseDelay + index * step}s`;
+  });
+});
     </script>
   </body>
 </html>
