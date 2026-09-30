@@ -26,6 +26,7 @@
 
       body {
         min-height: 100vh;
+
         font-family: Arial, Helvetica, sans-serif;
 
         background: radial-gradient(
@@ -118,7 +119,13 @@
       }
 
       .links a {
-        display: inline-block;
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 9px;
 
         padding: 12px 22px;
 
@@ -131,64 +138,99 @@
         transition: 0.25s ease;
       }
 
-      .github {
-        background: var(--primary);
-        color: var(--white);
-      }
+      /* LinkedIn */
 
       .linkedin {
-    background: #0A66C2;
-    color: #ffffff;
+        background: #0a66c2;
 
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
+        color: #ffffff;
+      }
 
-    gap: 9px;
+      .linkedin-icon {
+        width: 21px;
+        height: 21px;
 
-    padding: 12px 22px;
+        display: flex;
 
-    border-radius: 10px;
+        align-items: center;
+        justify-content: center;
 
-    text-decoration: none;
+        background: #ffffff;
 
-    font-weight: 600;
+        color: #0a66c2;
 
-    transition: 0.25s ease;
-}
+        border-radius: 3px;
 
-.linkedin-icon {
-    width: 21px;
-    height: 21px;
+        font-family: Arial, sans-serif;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        font-size: 15px;
 
-    background: #ffffff;
-    color: #0A66C2;
+        font-weight: 800;
 
-    border-radius: 3px;
+        line-height: 1;
+      }
 
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 800;
+      /* GitHub */
 
-    line-height: 1;
-}
+      .github {
+        background: #24292f;
 
-.linkedin:hover {
-    background: #004182;
-    transform: translateY(-3px);
+        color: #ffffff;
+      }
 
-    box-shadow:
-        0 8px 20px rgba(10, 102, 194, 0.25);
-}
+      .github-icon {
+        width: 21px;
+        height: 21px;
+      }
+
+      /* Gmail */
+
+      .gmail {
+        background: #ea4335;
+
+        color: #ffffff;
+      }
+
+      .gmail-icon {
+        width: 21px;
+        height: 21px;
+      }
+
+      /* WhatsApp */
+
+      .whatsapp {
+        background: #25d366;
+
+        color: #ffffff;
+      }
+
+      .whatsapp-icon {
+        width: 21px;
+        height: 21px;
+      }
+
+      /* Hover Effects */
 
       .links a:hover {
         transform: translateY(-3px);
 
         box-shadow: 0 8px 20px rgba(13, 59, 62, 0.18);
+      }
+
+      .linkedin:hover {
+        background: #004182;
+      }
+
+      .github:hover {
+        background: #000000;
+      }
+
+      .gmail:hover {
+        background: #c5221f;
+      }
+
+      .whatsapp:hover {
+        background: #1da851;
       }
 
       /* Footer */
@@ -225,42 +267,320 @@
           width: 100%;
         }
       }
+
+      /* =========================
+   Theme Toggle
+========================= */
+
+      .theme-toggle {
+        position: fixed;
+        top: 25px;
+        right: 25px;
+
+        width: 48px;
+        height: 48px;
+
+        border: 1px solid rgba(13, 59, 62, 0.15);
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--primary);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+
+        backdrop-filter: blur(10px);
+
+        box-shadow: 0 8px 25px rgba(13, 59, 62, 0.12);
+
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .theme-toggle svg {
+        width: 22px;
+        height: 22px;
+
+        transition:
+          transform 0.35s ease,
+          opacity 0.25s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: translateY(-2px) rotate(8deg);
+
+        box-shadow: 0 10px 28px rgba(13, 59, 62, 0.2);
+      }
+
+      .theme-toggle:active {
+        transform: scale(0.92);
+      }
+
+      /* =========================
+   Dark Mode
+========================= */
+
+      body.dark-mode {
+        --background: #0b1f20;
+        --primary: #e8f5f3;
+        --secondary: #6fc8c2;
+        --text: #f1f5f5;
+        --muted: #b5c5c5;
+        --white: #172c2e;
+
+        background: radial-gradient(
+          circle at top,
+          #183537 0%,
+          #0b1f20 55%,
+          #061415 100%
+        );
+      }
+
+      body.dark-mode .theme-toggle {
+        background: rgba(23, 44, 46, 0.9);
+        color: #ffd166;
+
+        border-color: rgba(255, 255, 255, 0.12);
+
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+      }
+
+      body.dark-mode .theme-toggle:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      }
+
+      body.dark-mode .profile-image {
+        border-color: #172c2e;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      body.dark-mode footer {
+        color: #829898;
+      }
+
+      /* =========================
+   Mobile
+========================= */
+
+      @media (max-width: 500px) {
+        .theme-toggle {
+          top: 18px;
+          right: 18px;
+
+          width: 44px;
+          height: 44px;
+        }
+      }
     </style>
   </head>
 
   <body>
+    <!-- Theme Toggle -->
+
+    <button
+      class="theme-toggle"
+      id="themeToggle"
+      aria-label="Toggle dark mode"
+      title="Toggle theme"
+    >
+      <svg
+        id="themeIcon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+    </button>
     <main class="container">
-      <!-- Your Personal Photo -->
+      <!-- Profile Image -->
+
       <img src="Hero.png" alt="Moamen Abouhaty" class="profile-image" />
 
       <!-- Name -->
+
       <h1>Moamen Abouhaty</h1>
 
       <!-- Profession -->
+
       <div class="title">Backend Engineer</div>
 
       <!-- Short Introduction -->
+
       <p class="description">
         Backend Engineer focused on building reliable backend applications, REST
-        APIs, and AI-powered solutions using Node.js and modern backend
-        technologies.
+        APIs, and AI-powered solutions using Node.js, with a background in
+        embedded systems and IoT technologies.
       </p>
 
       <!-- Social Links -->
+
       <div class="links">
-   <a
-    class="linkedin"
-    href="https://www.linkedin.com/in/moamen-elsayed-abouhaty/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LinkedIn"
->
-    <span class="linkedin-icon">in</span>
-    <span>LinkedIn</span>
-</a>
+        <!-- LinkedIn -->
+
+        <a
+          class="linkedin"
+          href="https://www.linkedin.com/in/moamen-elsayed-abouhaty/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <span class="linkedin-icon">in</span>
+          <span>LinkedIn</span>
+        </a>
+
+        
+
+        <!-- Gmail -->
+
+        <a class="gmail" href="mailto:hybrid0b1@gmail.com" aria-label="Gmail">
+          <svg
+            class="gmail-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1
+              21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0
+              1 3 18.5v-13Z"
+              fill="white"
+            />
+
+            <path
+              d="M5 7l7 5.5L19 7"
+              stroke="#EA4335"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M5 18V7l7 5.5L19 7v11"
+              stroke="#EA4335"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span>Gmail</span>
+        </a>
+
+        <!-- WhatsApp -->
+
+        <a
+          class="whatsapp"
+          href="https://wa.me/201550570244"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+        >
+          <svg
+            class="whatsapp-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2a9.9 9.9 0 0 0-8.56 14.88L2 22l5.27-1.38
+              A9.99 9.99 0 1 0 12 2Zm0 18a8 8 0 0 1-4.08-1.12l-.3-.18
+              -3.13.82.84-3.05-.2-.32A8 8 0 1 1 12 20Zm4.39-5.94
+              c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12
+              -.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12
+              -1-.37-1.91-1.18-.7-.62-1.17-1.39-1.31-1.63
+              -.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42
+              .12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42
+              -.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.43
+              h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86
+              2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25
+              1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07
+              1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14
+              -.06-.1-.22-.16-.46-.28Z"
+            />
+          </svg>
+
+          <span>WhatsApp</span>
+        </a>
       </div>
 
+      <!-- Footer -->
+
       <footer>© 2026 Moamen Abouhaty</footer>
+      <script>
+        const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
+
+        const sunIcon = `
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2"></path>
+    <path d="M12 20v2"></path>
+    <path d="m4.93 4.93 1.41 1.41"></path>
+    <path d="m17.66 17.66 1.41 1.41"></path>
+    <path d="M2 12h2"></path>
+    <path d="M20 12h2"></path>
+    <path d="m6.34 17.66-1.41 1.41"></path>
+    <path d="m19.07 4.93-1.41 1.41"></path>
+  `;
+
+        const moonIcon = `
+    <path d="M21 12.79A9 9 0 1 1 11.21 3
+    7 7 0 0 0 21 12.79Z"></path>
+  `;
+
+        function updateTheme() {
+          const isDark = document.body.classList.contains("dark-mode");
+
+          themeIcon.innerHTML = isDark ? moonIcon : sunIcon;
+
+          themeToggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light mode" : "Switch to dark mode",
+          );
+
+          themeToggle.setAttribute(
+            "title",
+            isDark ? "Light mode" : "Dark mode",
+          );
+        }
+
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+          document.body.classList.add("dark-mode");
+        }
+
+        updateTheme();
+
+        themeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+
+          const isDark = document.body.classList.contains("dark-mode");
+
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+
+          updateTheme();
+        });
+      </script>
     </main>
   </body>
 </html>
