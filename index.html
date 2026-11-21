@@ -9,7 +9,11 @@
     <title>Moamen Abouhaty</title>
 
     <!-- Devicon CDN for Official Tech Icons -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css"
+    />
 
     <style>
       * {
@@ -170,6 +174,22 @@
         background: #1da851;
       }
 
+      /* Masrawy Sat */
+      .masrawysat {
+        background: #1565c0;
+        color: #ffffff;
+      }
+
+      .masrawysat-icon {
+        width: 21px;
+        height: 21px;
+      }
+
+      /* Hover Effect */
+      .masrawysat:hover {
+        background: #0d47a1;
+      }
+
       /* =========================
          Tech Stack Section
       ========================= */
@@ -229,7 +249,9 @@
         background: var(--chip-bg);
         border: 1px solid var(--card-border);
         border-radius: 12px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       .tech-item:hover {
@@ -242,21 +264,51 @@
         margin-bottom: 6px;
 
         /* Add color highlights for icons */
-        &.devicon-nodejs-plain { color: #339933; }
-        &.devicon-express-original { color: var(--text); }
-        &.devicon-javascript-plain { color: #f7df1e; }
-        &.devicon-typescript-plain { color: #3178c6; }
-        &.devicon-python-plain { color: #3776ab; }
-        &.devicon-c-plain { color: #a8b9cc; }
-        &.devicon-cplusplus-plain { color: #00599c; }
-        &.devicon-rust-plain { color: var(--text); }
-        &.devicon-arduino-plain { color: #00979d; }
-        &.devicon-raspberrypi-line { color: #c51a4a; }
-        &.devicon-embedded-c { color: #00599c; }
-        &.devicon-docker-plain { color: #2496ed; }
-        &.devicon-postgresql-plain { color: #4169e1; }
-        &.devicon-mongodb-plain { color: #47a248; }
-        &.devicon-redis-plain { color: #dc382d; }
+        &.devicon-nodejs-plain {
+          color: #339933;
+        }
+        &.devicon-express-original {
+          color: var(--text);
+        }
+        &.devicon-javascript-plain {
+          color: #f7df1e;
+        }
+        &.devicon-typescript-plain {
+          color: #3178c6;
+        }
+        &.devicon-python-plain {
+          color: #3776ab;
+        }
+        &.devicon-c-plain {
+          color: #a8b9cc;
+        }
+        &.devicon-cplusplus-plain {
+          color: #00599c;
+        }
+        &.devicon-rust-plain {
+          color: var(--text);
+        }
+        &.devicon-arduino-plain {
+          color: #00979d;
+        }
+        &.devicon-raspberrypi-line {
+          color: #c51a4a;
+        }
+        &.devicon-embedded-c {
+          color: #00599c;
+        }
+        &.devicon-docker-plain {
+          color: #2496ed;
+        }
+        &.devicon-postgresql-plain {
+          color: #4169e1;
+        }
+        &.devicon-mongodb-plain {
+          color: #47a248;
+        }
+        &.devicon-redis-plain {
+          color: #dc382d;
+        }
       }
 
       /* Custom SVG styling for hardware/IoT icons without direct Devicon class */
@@ -297,13 +349,19 @@
         cursor: pointer;
         backdrop-filter: blur(10px);
         box-shadow: 0 8px 25px rgba(13, 59, 62, 0.12);
-        transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          color 0.25s ease,
+          box-shadow 0.25s ease;
       }
 
       .theme-toggle svg {
         width: 22px;
         height: 22px;
-        transition: transform 0.35s ease, opacity 0.25s ease;
+        transition:
+          transform 0.35s ease,
+          opacity 0.25s ease;
       }
 
       .theme-toggle:hover {
@@ -398,111 +456,126 @@
    PRO ANIMATION SYSTEM (Fast, Lightweight & Smooth)
    ========================================================= */
 
-/* Define Keyframe Animations */
-@keyframes heroEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.96);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+      /* Define Keyframe Animations */
+      @keyframes heroEntrance {
+        0% {
+          opacity: 0;
+          transform: translateY(20px) scale(0.96);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
 
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      @keyframes fadeSlideUp {
+        0% {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-@keyframes cardPop {
-  0% {
-    opacity: 0;
-    transform: translateY(22px) scale(0.98);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+      @keyframes cardPop {
+        0% {
+          opacity: 0;
+          transform: translateY(22px) scale(0.98);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
 
-@keyframes chipScale {
-  0% {
-    opacity: 0;
-    transform: scale(0.85) translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
+      @keyframes chipScale {
+        0% {
+          opacity: 0;
+          transform: scale(0.85) translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
 
-/* Base Initial States & Entrance Timing */
-.profile-image {
-  animation: heroEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform, opacity;
-}
+      /* Base Initial States & Entrance Timing */
+      .profile-image {
+        animation: heroEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        will-change: transform, opacity;
+      }
 
-h1 {
-  animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
-  will-change: transform, opacity;
-}
+      h1 {
+        animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s
+          backwards;
+        will-change: transform, opacity;
+      }
 
-.title {
-  animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
-  will-change: transform, opacity;
-}
+      .title {
+        animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.15s
+          backwards;
+        will-change: transform, opacity;
+      }
 
-.description {
-  animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
-  will-change: transform, opacity;
-}
+      .description {
+        animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.2s
+          backwards;
+        will-change: transform, opacity;
+      }
 
-/* Social Links Animation Delay */
-.links a {
-  opacity: 0;
-  animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform, opacity;
-}
+      /* Social Links Animation Delay */
+      .links a {
+        opacity: 0;
+        animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        will-change: transform, opacity;
+      }
 
-.links a:nth-child(1) { animation-delay: 0.25s; }
-.links a:nth-child(2) { animation-delay: 0.3s; }
-.links a:nth-child(3) { animation-delay: 0.35s; }
+      .links a:nth-child(1) {
+        animation-delay: 0.25s;
+      }
+      .links a:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .links a:nth-child(3) {
+        animation-delay: 0.35s;
+      }
+      .links a:nth-child(4) {
+        animation-delay: 0.4s;
+      }
 
-/* Tech Stack Container Entrance */
-.tech-section {
-  animation: cardPop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
-  will-change: transform, opacity;
-}
+      /* Tech Stack Container Entrance */
+      .tech-section {
+        animation: cardPop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
+        will-change: transform, opacity;
+      }
 
-/* Fast Stagger for Tech Items Grid */
-.tech-item {
-  opacity: 0;
-  animation: chipScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform, opacity;
-}
+      /* Fast Stagger for Tech Items Grid */
+      .tech-item {
+        opacity: 0;
+        animation: chipScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        will-change: transform, opacity;
+      }
 
-/* Hardware-Accelerated Micro-Interactions on Hover */
-.tech-item, .links a, .theme-toggle {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.2s ease,
-              border-color 0.2s ease !important;
-}
+      /* Hardware-Accelerated Micro-Interactions on Hover */
+      .tech-item,
+      .links a,
+      .theme-toggle {
+        transition:
+          transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+          background 0.2s ease,
+          border-color 0.2s ease !important;
+      }
 
-.tech-item:hover {
-  transform: translateY(-4px) scale(1.03) !important;
-}
+      .tech-item:hover {
+        transform: translateY(-4px) scale(1.03) !important;
+      }
 
-.links a:hover {
-  transform: translateY(-3px) scale(1.02) !important;
-}
+      .links a:hover {
+        transform: translateY(-3px) scale(1.02) !important;
+      }
     </style>
   </head>
 
@@ -543,8 +616,8 @@ h1 {
       <!-- Name -->
       <h1>Moamen Abouhaty</h1>
 
-     <!-- Profession -->
-<div class="title">Backend & Embedded Systems Engineer</div>
+      <!-- Profession -->
+      <div class="title">Backend & Embedded Systems Engineer</div>
 
       <!-- Short Introduction -->
       <p class="description">
@@ -632,12 +705,41 @@ h1 {
           </svg>
           <span>WhatsApp</span>
         </a>
+
+        <!-- Masrawy Sat -->
+        <a
+          class="masrawysat"
+          href="https://masrawysat.com/vb/member.php?u=1459687"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Masrawy Sat"
+        >
+          <svg
+            class="masrawysat-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <ellipse cx="12" cy="12" rx="4" ry="10" />
+            <path d="M2 12h20" />
+            <path d="M4.5 6.5h15" />
+            <path d="M4.5 17.5h15" />
+          </svg>
+          <span>Masrawy Sat</span>
+        </a>
       </div>
 
       <!-- Tech Stack Section -->
       <section class="tech-section">
         <h2>Tech Stack</h2>
-        <p class="subtitle">Languages, Backend Ecosystem & Embedded/IoT Technologies</p>
+        <p class="subtitle">
+          Languages, Backend Ecosystem & Embedded/IoT Technologies
+        </p>
 
         <!-- Programming Languages -->
         <div class="tech-group">
@@ -670,125 +772,116 @@ h1 {
           </div>
         </div>
 
-       <!-- Backend Technologies -->
-<div class="tech-group">
-  <div class="tech-group-title">Backend Architecture & Ecosystem</div>
-  <div class="tech-grid">
+        <!-- Backend Technologies -->
+        <div class="tech-group">
+          <div class="tech-group-title">Backend Architecture & Ecosystem</div>
+          <div class="tech-grid">
+            <!-- Languages & Runtimes -->
+            <div class="tech-item">
+              <i class="devicon-nodejs-plain colored"></i>
+              <span>Node.js</span>
+            </div>
 
-    <!-- Languages & Runtimes -->
-    <div class="tech-item">
-      <i class="devicon-nodejs-plain colored"></i>
-      <span>Node.js</span>
-    </div>
+            <!-- Frameworks -->
+            <div class="tech-item">
+              <i class="devicon-express-original colored"></i>
+              <span>Express.js</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-nextjs-plain colored"></i>
+              <span>Next.js</span>
+            </div>
 
-    <!-- Frameworks -->
-    <div class="tech-item">
-      <i class="devicon-express-original colored"></i>
-      <span>Express.js</span>
-    </div>
-    <div class="tech-item">
-  <i class="devicon-nextjs-plain colored"></i>
-  <span>Next.js</span>
-</div>
+            <!-- Databases (SQL & NoSQL) -->
+            <div class="tech-item">
+              <i class="devicon-postgresql-plain colored"></i>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-mongodb-plain colored"></i>
+              <span>MongoDB</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-mysql-plain colored"></i>
+              <span>MySQL</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-sqlite-plain colored"></i>
+              <span>SQLite</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-redis-plain colored"></i>
+              <span>Redis</span>
+            </div>
 
-    <!-- Databases (SQL & NoSQL) -->
-    <div class="tech-item">
-      <i class="devicon-postgresql-plain colored"></i>
-      <span>PostgreSQL</span>
-    </div>
-    <div class="tech-item">
-      <i class="devicon-mongodb-plain colored"></i>
-      <span>MongoDB</span>
-    </div>
-    <div class="tech-item">
-      <i class="devicon-mysql-plain colored"></i>
-      <span>MySQL</span>
-    </div>
-    <div class="tech-item">
-      <i class="devicon-sqlite-plain colored"></i>
-      <span>SQLite</span>
-    </div>
-    <div class="tech-item">
-      <i class="devicon-redis-plain colored"></i>
-      <span>Redis</span>
-    </div>
+            <!-- ORMs & Database Tools -->
+            <div class="tech-item">
+              <i class="devicon-sequelize-plain colored"></i>
+              <span>Sequelize</span>
+            </div>
 
-    <!-- ORMs & Database Tools -->
-    <div class="tech-item">
-      <i class="devicon-sequelize-plain colored"></i>
-      <span>Sequelize</span>
-    </div>
+            <!-- Communication & APIs -->
+            <div class="tech-item">
+              <i class="devicon-graphql-plain colored"></i>
+              <span>GraphQL</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-socketio-original colored"></i>
+              <span>Socket.IO</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-postman-plain colored"></i>
 
-    <!-- Communication & APIs -->
-    <div class="tech-item">
-      <i class="devicon-graphql-plain colored"></i>
-      <span>GraphQL</span>
-    </div>
-    <div class="tech-item">
-      <i class="devicon-socketio-original colored"></i>
-      <span>Socket.IO</span>
-    </div>
- <div class="tech-item">
-  
-            <i class="devicon-postman-plain colored"></i>
-          
-  <span>Postman</span>
-</div>
-    
+              <span>Postman</span>
+            </div>
 
-    <!-- Testing -->
-    <div class="tech-item">
-      <i class="devicon-jest-plain colored"></i>
-      <span>Jest</span>
-    </div>
+            <!-- Testing -->
+            <div class="tech-item">
+              <i class="devicon-jest-plain colored"></i>
+              <span>Jest</span>
+            </div>
 
-    <!-- DevOps, Cloud & Servers -->
-    <div class="tech-item">
-      <i class="devicon-docker-plain colored"></i>
-      <span>Docker</span>
-    </div>
-    <div class="tech-item">
-      <i class="devicon-kubernetes-plain colored"></i>
-      <span>Kubernetes</span>
-    </div>
-    <div class="tech-item">
-      
-            <i class="devicon-linux-plain"></i>
-          
-      <span>Linux</span>
-    </div>
-    <div class="tech-item">
-      <i class="devicon-git-plain colored"></i>
-      <span>Git</span>
-    </div>
-<div class="tech-item">
-  <i class="devicon-github-original colored"></i>
-  <span>GitHub</span>
-</div>
-  </div>
-</div>
+            <!-- DevOps, Cloud & Servers -->
+            <div class="tech-item">
+              <i class="devicon-docker-plain colored"></i>
+              <span>Docker</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-kubernetes-plain colored"></i>
+              <span>Kubernetes</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-linux-plain"></i>
+
+              <span>Linux</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-git-plain colored"></i>
+              <span>Git</span>
+            </div>
+            <div class="tech-item">
+              <i class="devicon-github-original colored"></i>
+              <span>GitHub</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Embedded Systems & IoT -->
         <div class="tech-group">
           <div class="tech-group-title">Embedded Systems & IoT</div>
+
           <div class="tech-grid">
             <div class="tech-item">
-              
-            
-            <i class="devicon-arduino-plain-wordmark colored"></i>
-          
-          
+              <i class="devicon-arduino-plain-wordmark colored"></i>
               <span>Arduino</span>
             </div>
+
             <div class="tech-item">
-              
-            
-            <i class="devicon-raspberrypi-plain colored"></i>
-          
-          
+              <i class="devicon-raspberrypi-plain colored"></i>
               <span>Raspberry Pi</span>
             </div>
-         
+          </div>
+        </div>
       </section>
 
       <!-- Footer -->
@@ -826,10 +919,7 @@ h1 {
           isDark ? "Switch to light mode" : "Switch to dark mode",
         );
 
-        themeToggle.setAttribute(
-          "title",
-          isDark ? "Light mode" : "Dark mode",
-        );
+        themeToggle.setAttribute("title", isDark ? "Light mode" : "Dark mode");
       }
 
       const savedTheme = localStorage.getItem("theme");
@@ -852,15 +942,15 @@ h1 {
       });
 
       /* Auto-Stagger Animation Delays for Tech Items */
-document.addEventListener("DOMContentLoaded", () => {
-  const techItems = document.querySelectorAll(".tech-item");
-  const baseDelay = 0.42; // Starts right after the card appears
-  const step = 0.025;     // Ultra-fast step for responsive feel
+      document.addEventListener("DOMContentLoaded", () => {
+        const techItems = document.querySelectorAll(".tech-item");
+        const baseDelay = 0.42; // Starts right after the card appears
+        const step = 0.025; // Ultra-fast step for responsive feel
 
-  techItems.forEach((item, index) => {
-    item.style.animationDelay = `${baseDelay + index * step}s`;
-  });
-});
+        techItems.forEach((item, index) => {
+          item.style.animationDelay = `${baseDelay + index * step}s`;
+        });
+      });
     </script>
   </body>
 </html>
