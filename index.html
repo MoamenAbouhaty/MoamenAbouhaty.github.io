@@ -136,14 +136,17 @@
 
       /* Gmail */
       .gmail {
-        background: #ea4335;
-        color: #ffffff;
-      }
+  background: #ffffff;
+  color: #ea4335;
+  border: 1px solid #dadce0;
+}
 
       .gmail-icon {
-        width: 21px;
-        height: 21px;
-      }
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+  display: block;
+}
 
       /* WhatsApp */
       .whatsapp {
@@ -167,8 +170,8 @@
       }
 
       .gmail:hover {
-        background: #c5221f;
-      }
+  background: #f8f9fa;
+}
 
       .whatsapp:hover {
         background: #1da851;
@@ -640,37 +643,49 @@
           <span>LinkedIn</span>
         </a>
 
-        <!-- Gmail -->
-        <a class="gmail" href="mailto:hybrid0b1@gmail.com" aria-label="Gmail">
-          <svg
-            class="gmail-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1
-              21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0
-              1 3 18.5v-13Z"
-              fill="white"
-            />
-            <path
-              d="M5 7l7 5.5L19 7"
-              stroke="#EA4335"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M5 18V7l7 5.5L19 7v11"
-              stroke="#EA4335"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span>Gmail</span>
-        </a>
+        
+<!-- Gmail -->
+<a class="gmail" href="mailto:hybrid0b1@gmail.com" aria-label="Gmail">
+  <svg
+    class="gmail-icon"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
+    <!-- Blue right side -->
+    <path
+      d="M22 6.5v11a2.5 2.5 0 0 1-2.5 2.5H18V8.5l4-2Z"
+      fill="#4285F4"
+    />
+
+    <!-- Green left side -->
+    <path
+      d="M2 6.5v11A2.5 2.5 0 0 0 4.5 20H6V8.5L2 6.5Z"
+      fill="#34A853"
+    />
+
+    <!-- Red Gmail envelope -->
+    <path
+      d="M2 5.5A2.5 2.5 0 0 1 6 3.5L12 8l6-4.5a2.5 2.5 0 0 1 4 2V7l-10 7L2 7V5.5Z"
+      fill="#EA4335"
+    />
+
+    <!-- Yellow left accent -->
+    <path
+      d="M2 7l4 3v10H4.5A2.5 2.5 0 0 1 2 17.5V7Z"
+      fill="#FBBC04"
+    />
+
+    <!-- Red bottom section -->
+    <path
+      d="M6 10l6 4 6-4v10H6V10Z"
+      fill="#C5221F"
+    />
+  </svg>
+
+  <span>Gmail</span>
+</a>
+
 
         <!-- WhatsApp -->
         <a
