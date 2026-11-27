@@ -3,10 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Moamen Abouhaty - Backend & Embedded Systems Engineer"
+    />
+    <title>Moamen Abouhaty | Backend & Embedded Systems Engineer</title>
 
-    <meta name="description" content="Moamen Abouhaty - Backend Engineer" />
-
-    <title>Moamen Abouhaty</title>
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Devicon CDN for Official Tech Icons -->
     <link
@@ -16,6 +25,9 @@
     />
 
     <style>
+      /* =========================================================
+         1. RESET & CSS VARIABLES (DAY & NIGHT PALETTES)
+         ========================================================= */
       * {
         margin: 0;
         padding: 0;
@@ -23,204 +35,424 @@
       }
 
       :root {
-        --background: #e8f5f3;
-        --primary: #0d3b3e;
-        --secondary: #297373;
-        --text: #111111;
-        --muted: #526666;
-        --white: #ffffff;
-        --card-bg: rgba(255, 255, 255, 0.7);
-        --card-border: rgba(13, 59, 62, 0.12);
-        --chip-bg: #ffffff;
+        /* Day Mode (Crisp Teal & Slate Architectural Palette) */
+        --bg-base: #f0f7f6;
+        --bg-gradient: radial-gradient(
+            circle at 15% 10%,
+            rgba(20, 184, 166, 0.14) 0%,
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 85% 85%,
+            rgba(14, 165, 233, 0.12) 0%,
+            transparent 45%
+          ),
+          linear-gradient(180deg, #f8fbfb 0%, #e6f2f0 100%);
+        --grid-line: rgba(13, 59, 62, 0.045);
+
+        --primary: #0b3235;
+        --accent: #0d9488;
+        --accent-soft: rgba(13, 148, 136, 0.12);
+        --text-main: #0f172a;
+        --text-muted: #475569;
+
+        --glass-bg: rgba(255, 255, 255, 0.72);
+        --glass-border: rgba(255, 255, 255, 0.85);
+        --glass-shadow: 0 20px 50px -12px rgba(11, 50, 53, 0.1);
+
+        --chip-bg: rgba(255, 255, 255, 0.9);
+        --chip-border: rgba(13, 59, 62, 0.1);
+        --chip-hover-border: rgba(13, 148, 136, 0.45);
+        --mono-icon-color: #1e293b;
       }
 
+      body.dark-mode {
+        /* Night Mode (Deep Cyber-Teal & Obsidian Palette) */
+        --bg-base: #061012;
+        --bg-gradient: radial-gradient(
+            circle at 20% 10%,
+            rgba(45, 212, 191, 0.12) 0%,
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(56, 189, 248, 0.1) 0%,
+            transparent 45%
+          ),
+          linear-gradient(180deg, #071316 0%, #040b0d 100%);
+        --grid-line: rgba(45, 212, 191, 0.04);
+
+        --primary: #f1f5f9;
+        --accent: #2dd4bf;
+        --accent-soft: rgba(45, 212, 191, 0.14);
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+
+        --glass-bg: rgba(14, 29, 33, 0.68);
+        --glass-border: rgba(45, 212, 191, 0.14);
+        --glass-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.6);
+
+        --chip-bg: rgba(19, 39, 44, 0.85);
+        --chip-border: rgba(255, 255, 255, 0.08);
+        --chip-hover-border: rgba(45, 212, 191, 0.5);
+        --mono-icon-color: #f1f5f9;
+      }
+
+      /* =========================================================
+         2. BASE LAYOUT & AMBIENT BACKGROUND
+         ========================================================= */
       body {
         min-height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
-        background: radial-gradient(
-          circle at top,
-          #ffffff 0%,
-          var(--background) 55%,
-          #dcefed 100%
+        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        background-color: var(--bg-base);
+        background-image: var(--bg-gradient);
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 20px 36px;
+        position: relative;
+        overflow-x: hidden;
+        transition:
+          background-color 0.45s ease,
+          color 0.35s ease;
+      }
+
+      /* Subtle Technical Grid Overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: linear-gradient(
+            to right,
+            var(--grid-line) 1px,
+            transparent 1px
+          ),
+          linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+        background-size: 38px 38px;
+        mask-image: radial-gradient(
+          ellipse at center,
+          black 40%,
+          transparent 85%
         );
-        color: var(--text);
+        -webkit-mask-image: radial-gradient(
+          ellipse at center,
+          black 40%,
+          transparent 85%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* =========================================================
+         3. DAY / NIGHT THEME TOGGLE
+         ========================================================= */
+      .theme-toggle {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 100;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        color: var(--primary);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 40px 20px;
+        cursor: pointer;
+        transition:
+          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          background 0.35s ease,
+          color 0.35s ease,
+          box-shadow 0.3s ease;
       }
 
+      .theme-toggle svg {
+        width: 22px;
+        height: 22px;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .theme-toggle:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 28px rgba(13, 148, 136, 0.22);
+      }
+
+      .theme-toggle:hover svg {
+        transform: rotate(22deg);
+      }
+
+      .theme-toggle:active {
+        transform: scale(0.92);
+      }
+
+      body.dark-mode .theme-toggle {
+        color: #fbbf24;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+      }
+
+      /* =========================================================
+         4. MAIN PORTFOLIO CONTAINER & HERO CARD
+         ========================================================= */
       .container {
         width: 100%;
-        max-width: 720px;
-        text-align: center;
+        max-width: 860px;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
       }
 
-      /* Profile Image */
+      .hero-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 28px;
+        padding: 44px 36px 38px;
+        text-align: center;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: var(--glass-shadow);
+        transition:
+          background 0.4s ease,
+          border-color 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      /* Status Pill */
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        border: 1px solid rgba(13, 148, 136, 0.25);
+        color: var(--accent);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.6);
+        animation: pulseDot 2s infinite;
+      }
+
+      /* Profile Image with Glowing Ring */
+      .avatar-wrapper {
+        position: relative;
+        width: 164px;
+        height: 164px;
+        margin: 0 auto 24px;
+        border-radius: 50%;
+        padding: 5px;
+        background: linear-gradient(135deg, var(--accent), #0284c7, #10b981);
+        box-shadow: 0 16px 36px -8px rgba(13, 148, 136, 0.35);
+      }
+
       .profile-image {
-        width: 180px;
-        height: 180px;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         border-radius: 50%;
-        border: 6px solid var(--white);
-        box-shadow: 0 15px 40px rgba(13, 59, 62, 0.2);
-        margin-bottom: 28px;
+        border: 4px solid var(--bg-base);
+        display: block;
+        transition:
+          border-color 0.4s ease,
+          transform 0.35s ease;
       }
 
-      /* Name */
+      .avatar-wrapper:hover .profile-image {
+        transform: scale(1.03);
+      }
+
+      /* Typography */
       h1 {
         color: var(--primary);
-        font-size: clamp(2.2rem, 7vw, 4rem);
-        line-height: 1.1;
-        margin-bottom: 12px;
+        font-size: clamp(2.1rem, 5.5vw, 3.3rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+        margin-bottom: 10px;
       }
 
-      /* Job Title */
       .title {
-        color: var(--secondary);
-        font-size: 1.25rem;
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(0.95rem, 2.5vw, 1.12rem);
         font-weight: 600;
-        margin-bottom: 22px;
+        color: var(--accent);
+        margin-bottom: 18px;
       }
 
-      /* Description */
       .description {
-        max-width: 560px;
+        max-width: 600px;
         margin: 0 auto 30px;
-        color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.8;
+        color: var(--text-muted);
+        font-size: 1.02rem;
+        line-height: 1.75;
       }
 
-      /* Social Links */
+      /* =========================================================
+         5. SOCIAL ACTION BUTTONS
+         ========================================================= */
       .links {
         display: flex;
         justify-content: center;
         gap: 14px;
         flex-wrap: wrap;
-        margin-bottom: 45px;
       }
 
       .links a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 9px;
-        padding: 12px 22px;
-        border-radius: 10px;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 14px;
         text-decoration: none;
+        font-size: 0.95rem;
         font-weight: 600;
-        transition: 0.25s ease;
+        color: #ffffff;
+        transition:
+          transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.25s ease,
+          filter 0.25s ease;
+      }
+
+      .links a:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.06);
+      }
+
+      .links a:active {
+        transform: translateY(0) scale(0.98);
       }
 
       /* LinkedIn */
       .linkedin {
-        background: #0a66c2;
-        color: #ffffff;
+        background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+        box-shadow: 0 8px 20px -4px rgba(10, 102, 194, 0.4);
       }
 
       .linkedin-icon {
-        width: 21px;
-        height: 21px;
+        width: 20px;
+        height: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: #ffffff;
         color: #0a66c2;
-        border-radius: 3px;
-        font-family: Arial, sans-serif;
-        font-size: 15px;
+        border-radius: 4px;
+        font-size: 14px;
         font-weight: 800;
         line-height: 1;
       }
 
       /* Gmail */
       .gmail {
-        background: #ea4335;
-        color: #ffffff;
+        background: linear-gradient(135deg, #ea4335 0%, #c5221f 100%);
+        box-shadow: 0 8px 20px -4px rgba(234, 67, 53, 0.4);
       }
 
       .gmail-icon {
-        width: 21px;
-        height: 21px;
+        width: 20px;
+        height: 20px;
       }
 
       /* WhatsApp */
       .whatsapp {
-        background: #25d366;
-        color: #ffffff;
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        box-shadow: 0 8px 20px -4px rgba(37, 211, 102, 0.38);
       }
 
       .whatsapp-icon {
-        width: 21px;
-        height: 21px;
+        width: 20px;
+        height: 20px;
       }
 
-      /* Hover Effects */
-      .links a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(13, 59, 62, 0.18);
-      }
-
-      .linkedin:hover {
-        background: #004182;
-      }
-
-      .gmail:hover {
-        background: #c5221f;
-      }
-
-      .whatsapp:hover {
-        background: #1da851;
-      }
-
-      /* =========================
-         Tech Stack Section
-      ========================= */
+      /* =========================================================
+         6. TECH STACK BENTO SECTION
+         ========================================================= */
       .tech-section {
-        margin-top: 10px;
-        padding: 30px 24px;
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 10px 30px rgba(13, 59, 62, 0.08);
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 28px;
+        padding: 36px 32px;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: var(--glass-shadow);
+        transition:
+          background 0.4s ease,
+          border-color 0.4s ease,
+          box-shadow 0.4s ease;
       }
 
-      .tech-section h2 {
+      .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .section-header h2 {
         color: var(--primary);
-        font-size: 1.5rem;
-        margin-bottom: 8px;
-        font-weight: 700;
+        font-size: 1.65rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
       }
 
-      .tech-section p.subtitle {
-        color: var(--muted);
-        font-size: 0.9rem;
-        margin-bottom: 25px;
+      .section-header .subtitle {
+        color: var(--text-muted);
+        font-size: 0.94rem;
       }
 
       .tech-group {
-        margin-bottom: 25px;
+        margin-bottom: 28px;
       }
 
       .tech-group:last-child {
         margin-bottom: 0;
       }
 
+      .tech-group-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
       .tech-group-title {
-        color: var(--secondary);
-        font-size: 0.85rem;
-        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 12px;
-        text-align: left;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+      }
+
+      .tech-group-line {
+        height: 1px;
+        width: 100%;
+        background: var(--chip-border);
       }
 
       .tech-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
         gap: 12px;
       }
 
@@ -229,187 +461,152 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 12px 8px;
+        gap: 8px;
+        padding: 15px 10px;
         background: var(--chip-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 12px;
+        border: 1px solid var(--chip-border);
+        border-radius: 16px;
+        cursor: default;
         transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
+          transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.22s ease,
+          box-shadow 0.22s ease,
+          background 0.35s ease;
       }
 
       .tech-item:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 16px rgba(13, 59, 62, 0.12);
+        transform: translateY(-4px);
+        border-color: var(--chip-hover-border);
+        box-shadow: 0 10px 24px -6px rgba(13, 148, 136, 0.18);
       }
 
       .tech-item i {
-        font-size: 2rem;
-        margin-bottom: 6px;
-
-        /* Add color highlights for icons */
-        &.devicon-nodejs-plain {
-          color: #339933;
-        }
-        &.devicon-express-original {
-          color: var(--text);
-        }
-        &.devicon-javascript-plain {
-          color: #f7df1e;
-        }
-        &.devicon-typescript-plain {
-          color: #3178c6;
-        }
-        &.devicon-python-plain {
-          color: #3776ab;
-        }
-        &.devicon-c-plain {
-          color: #a8b9cc;
-        }
-        &.devicon-cplusplus-plain {
-          color: #00599c;
-        }
-        &.devicon-rust-plain {
-          color: var(--text);
-        }
-        &.devicon-arduino-plain {
-          color: #00979d;
-        }
-        &.devicon-raspberrypi-line {
-          color: #c51a4a;
-        }
-        &.devicon-embedded-c {
-          color: #00599c;
-        }
-        &.devicon-docker-plain {
-          color: #2496ed;
-        }
-        &.devicon-postgresql-plain {
-          color: #4169e1;
-        }
-        &.devicon-mongodb-plain {
-          color: #47a248;
-        }
-        &.devicon-redis-plain {
-          color: #dc382d;
-        }
+        font-size: 2.1rem;
+        line-height: 1;
+        transition: transform 0.22s ease;
       }
 
-      /* Custom SVG styling for hardware/IoT icons without direct Devicon class */
-      .tech-item svg {
-        width: 2rem;
-        height: 2rem;
-        margin-bottom: 6px;
-        fill: var(--secondary);
+      .tech-item:hover i {
+        transform: scale(1.1);
+      }
+
+      /* Brand Icon Colors + Dark Mode Contrast Fixes */
+      .devicon-python-plain {
+        color: #3776ab;
+      }
+      .devicon-cplusplus-plain {
+        color: #00599c;
+      }
+      .devicon-c-plain {
+        color: #5c8dbc;
+      }
+      .devicon-javascript-plain {
+        color: #eab308;
+      }
+      .devicon-typescript-plain {
+        color: #3178c6;
+      }
+      .devicon-rust-plain,
+      .devicon-express-original,
+      .devicon-nextjs-plain,
+      .devicon-github-original,
+      .devicon-linux-plain,
+      .devicon-embeddedc-plain-wordmark {
+        color: var(--mono-icon-color) !important;
       }
 
       .tech-item span {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         font-weight: 600;
-        color: var(--text);
+        color: var(--text-main);
+        text-align: center;
       }
 
-      /* Footer */
+      /* =========================================================
+         7. FOOTER
+         ========================================================= */
       footer {
-        margin-top: 45px;
-        color: #718383;
-        font-size: 0.85rem;
+        text-align: center;
+        margin-top: 8px;
+        color: var(--text-muted);
+        font-size: 0.86rem;
+        font-weight: 500;
       }
 
-      /* Theme Toggle Button */
-      .theme-toggle {
-        position: fixed;
-        top: 25px;
-        right: 25px;
-        width: 48px;
-        height: 48px;
-        border: 1px solid rgba(13, 59, 62, 0.15);
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.8);
-        color: var(--primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 25px rgba(13, 59, 62, 0.12);
-        transition:
-          transform 0.25s ease,
-          background 0.25s ease,
-          color 0.25s ease,
-          box-shadow 0.25s ease;
+      /* =========================================================
+         8. ENTRANCE & MICRO ANIMATIONS
+         ========================================================= */
+      @keyframes pulseDot {
+        0% {
+          box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.65);
+        }
+        70% {
+          box-shadow: 0 0 0 8px rgba(13, 148, 136, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(13, 148, 136, 0);
+        }
       }
 
-      .theme-toggle svg {
-        width: 22px;
-        height: 22px;
-        transition:
-          transform 0.35s ease,
-          opacity 0.25s ease;
+      @keyframes cardReveal {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
-      .theme-toggle:hover {
-        transform: translateY(-2px) rotate(8deg);
-        box-shadow: 0 10px 28px rgba(13, 59, 62, 0.2);
+      @keyframes chipPop {
+        from {
+          opacity: 0;
+          transform: scale(0.9) translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
       }
 
-      .theme-toggle:active {
-        transform: scale(0.92);
+      .hero-card {
+        animation: cardReveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
-      /* Dark Mode Overrides */
-      body.dark-mode {
-        --background: #0b1f20;
-        --primary: #e8f5f3;
-        --secondary: #6fc8c2;
-        --text: #f1f5f5;
-        --muted: #b5c5c5;
-        --white: #172c2e;
-        --card-bg: rgba(23, 44, 46, 0.7);
-        --card-border: rgba(255, 255, 255, 0.12);
-        --chip-bg: #112325;
-
-        background: radial-gradient(
-          circle at top,
-          #183537 0%,
-          #0b1f20 55%,
-          #061415 100%
-        );
+      .tech-section {
+        animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s
+          backwards;
       }
 
-      body.dark-mode .theme-toggle {
-        background: rgba(23, 44, 46, 0.9);
-        color: #ffd166;
-        border-color: rgba(255, 255, 255, 0.12);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+      .tech-item {
+        opacity: 0;
+        animation: chipPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
-      body.dark-mode .theme-toggle:hover {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-      }
-
-      body.dark-mode .profile-image {
-        border-color: #172c2e;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-      }
-
-      body.dark-mode footer {
-        color: #829898;
-      }
-
-      /* Mobile Responsive */
-      @media (max-width: 500px) {
+      /* =========================================================
+         9. RESPONSIVE DESIGN
+         ========================================================= */
+      @media (max-width: 600px) {
         body {
-          padding: 20px 15px;
+          padding: 24px 14px 28px;
         }
 
-        .profile-image {
-          width: 145px;
-          height: 145px;
+        .theme-toggle {
+          top: 16px;
+          right: 16px;
+          width: 44px;
+          height: 44px;
         }
 
-        .description {
-          font-size: 0.95rem;
+        .hero-card {
+          padding: 34px 20px 28px;
+          border-radius: 22px;
+        }
+
+        .avatar-wrapper {
+          width: 140px;
+          height: 140px;
         }
 
         .links {
@@ -420,156 +617,38 @@
           width: 100%;
         }
 
-        .theme-toggle {
-          top: 18px;
-          right: 18px;
-          width: 44px;
-          height: 44px;
+        .tech-section {
+          padding: 26px 18px;
+          border-radius: 22px;
         }
 
         .tech-grid {
           grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
         }
 
-        .tech-section {
-          padding: 20px 16px;
+        .tech-item {
+          padding: 12px 6px;
         }
-      }
 
-      /* =========================================================
-   PRO ANIMATION SYSTEM (Fast, Lightweight & Smooth)
-   ========================================================= */
-
-      /* Define Keyframe Animations */
-      @keyframes heroEntrance {
-        0% {
-          opacity: 0;
-          transform: translateY(20px) scale(0.96);
+        .tech-item i {
+          font-size: 1.85rem;
         }
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
+
+        .tech-item span {
+          font-size: 0.76rem;
         }
-      }
-
-      @keyframes fadeSlideUp {
-        0% {
-          opacity: 0;
-          transform: translateY(18px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes cardPop {
-        0% {
-          opacity: 0;
-          transform: translateY(22px) scale(0.98);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      @keyframes chipScale {
-        0% {
-          opacity: 0;
-          transform: scale(0.85) translateY(10px);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-      }
-
-      /* Base Initial States & Entrance Timing */
-      .profile-image {
-        animation: heroEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        will-change: transform, opacity;
-      }
-
-      h1 {
-        animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s
-          backwards;
-        will-change: transform, opacity;
-      }
-
-      .title {
-        animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.15s
-          backwards;
-        will-change: transform, opacity;
-      }
-
-      .description {
-        animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.2s
-          backwards;
-        will-change: transform, opacity;
-      }
-
-      /* Social Links Animation Delay */
-      .links a {
-        opacity: 0;
-        animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        will-change: transform, opacity;
-      }
-
-      .links a:nth-child(1) {
-        animation-delay: 0.25s;
-      }
-      .links a:nth-child(2) {
-        animation-delay: 0.3s;
-      }
-      .links a:nth-child(3) {
-        animation-delay: 0.35s;
-      }
-      .links a:nth-child(4) {
-        animation-delay: 0.4s;
-      }
-
-      /* Tech Stack Container Entrance */
-      .tech-section {
-        animation: cardPop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.38s backwards;
-        will-change: transform, opacity;
-      }
-
-      /* Fast Stagger for Tech Items Grid */
-      .tech-item {
-        opacity: 0;
-        animation: chipScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        will-change: transform, opacity;
-      }
-
-      /* Hardware-Accelerated Micro-Interactions on Hover */
-      .tech-item,
-      .links a,
-      .theme-toggle {
-        transition:
-          transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-          box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-          background 0.2s ease,
-          border-color 0.2s ease !important;
-      }
-
-      .tech-item:hover {
-        transform: translateY(-4px) scale(1.03) !important;
-      }
-
-      .links a:hover {
-        transform: translateY(-3px) scale(1.02) !important;
       }
     </style>
   </head>
 
   <body>
-    <!-- Theme Toggle -->
+    <!-- Day / Night Theme Toggle -->
     <button
       class="theme-toggle"
       id="themeToggle"
       aria-label="Toggle dark mode"
-      title="Toggle theme"
+      title="Toggle Day/Night Mode"
     >
       <svg
         id="themeIcon"
@@ -594,98 +673,113 @@
     </button>
 
     <main class="container">
-      <!-- Profile Image -->
-      <img src="Hero.png" alt="Moamen Abouhaty" class="profile-image" />
+      <!-- Hero Profile Card -->
+      <section class="hero-card">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Available for Engineering Roles</span>
+        </div>
 
-      <!-- Name -->
-      <h1>Moamen Abouhaty</h1>
+        <!-- Profile Image -->
+        <div class="avatar-wrapper">
+          <img src="Hero.png" alt="Moamen Abouhaty" class="profile-image" />
+        </div>
 
-      <!-- Profession -->
-      <div class="title">Backend & Embedded Systems Engineer</div>
+        <!-- Name -->
+        <h1>Moamen Abouhaty</h1>
 
-      <!-- Short Introduction -->
-      <p class="description">
-        Backend Engineer focused on building reliable backend applications, REST
-        APIs, and AI-powered solutions using Node.js, with a background in
-        embedded systems and IoT technologies.
-      </p>
+        <!-- Profession -->
+        <div class="title">Backend &amp; Embedded Systems Engineer</div>
 
-      <!-- Social Links -->
-      <div class="links">
-        <!-- LinkedIn -->
-        <a
-          class="linkedin"
-          href="https://www.linkedin.com/in/moamen-elsayed-abouhaty/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-        >
-          <span class="linkedin-icon">in</span>
-          <span>LinkedIn</span>
-        </a>
+        <!-- Short Introduction -->
+        <p class="description">
+          Backend Engineer focused on building reliable backend applications,
+          REST APIs, and AI-powered solutions using Node.js, with a background
+          in embedded systems and IoT technologies.
+        </p>
 
-        <!-- Gmail -->
-        <a class="gmail" href="mailto:hybrid0b1@gmail.com" aria-label="Gmail">
-          <svg
-            class="gmail-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
+        <!-- Social Links -->
+        <div class="links">
+          <!-- LinkedIn -->
+          <a
+            class="linkedin"
+            href="https://www.linkedin.com/in/moamen-elsayed-abouhaty/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
-            <path
-              d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13Z"
-              fill="white"
-            />
-            <path
-              d="M5 7l7 5.5L19 7"
-              stroke="#EA4335"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M5 18V7l7 5.5L19 7v11"
-              stroke="#EA4335"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span>Gmail</span>
-        </a>
+            <span class="linkedin-icon">in</span>
+            <span>LinkedIn</span>
+          </a>
 
-        <!-- WhatsApp -->
-        <a
-          class="whatsapp"
-          href="https://wa.me/201091871967"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp"
-        >
-          <svg
-            class="whatsapp-icon"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
+          <!-- Gmail -->
+          <a class="gmail" href="mailto:hybrid0b1@gmail.com" aria-label="Gmail">
+            <svg
+              class="gmail-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13Z"
+                fill="white"
+              />
+              <path
+                d="M5 7l7 5.5L19 7"
+                stroke="#EA4335"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5 18V7l7 5.5L19 7v11"
+                stroke="#EA4335"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>Gmail</span>
+          </a>
+
+          <!-- WhatsApp -->
+          <a
+            class="whatsapp"
+            href="https://wa.me/201091871967"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
           >
-            <path
-              d="M12 2a9.9 9.9 0 0 0-8.56 14.88L2 22l5.27-1.38 A9.99 9.99 0 1 0 12 2Zm0 18a8 8 0 0 1-4.08-1.12l-.3-.18 -3.13.82.84-3.05-.2-.32A8 8 0 1 1 12 20Zm4.39-5.94 c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12 -.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12 -1-.37-1.91-1.18-.7-.62-1.17-1.39-1.31-1.63 -.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42 .12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42 -.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.43 h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14 -.06-.1-.22-.16-.46-.28Z"
-            />
-          </svg>
-          <span>WhatsApp</span>
-        </a>
-      </div>
+            <svg
+              class="whatsapp-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2a9.9 9.9 0 0 0-8.56 14.88L2 22l5.27-1.38 A9.99 9.99 0 1 0 12 2Zm0 18a8 8 0 0 1-4.08-1.12l-.3-.18 -3.13.82.84-3.05-.2-.32A8 8 0 1 1 12 20Zm4.39-5.94 c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12 -.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12 -1-.37-1.91-1.18-.7-.62-1.17-1.39-1.31-1.63 -.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42 .12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42 -.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.43 h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.15 1.51.09.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14 -.06-.1-.22-.16-.46-.28Z"
+              />
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </section>
 
       <!-- Tech Stack Section -->
       <section class="tech-section">
-        <h2>Tech Stack</h2>
-        <p class="subtitle">
-          Languages, Backend Ecosystem & Embedded/IoT Technologies
-        </p>
+        <div class="section-header">
+          <h2>Technical Stack</h2>
+          <p class="subtitle">
+            Languages, Backend Ecosystem &amp; Embedded/IoT Technologies
+          </p>
+        </div>
 
         <!-- Programming Languages -->
         <div class="tech-group">
-          <div class="tech-group-title">Languages</div>
+          <div class="tech-group-header">
+            <span class="tech-group-title">Languages</span>
+            <div class="tech-group-line"></div>
+          </div>
           <div class="tech-grid">
             <div class="tech-item">
               <i class="devicon-python-plain"></i>
@@ -716,15 +810,17 @@
 
         <!-- Backend Technologies -->
         <div class="tech-group">
-          <div class="tech-group-title">Backend Architecture & Ecosystem</div>
+          <div class="tech-group-header">
+            <span class="tech-group-title"
+              >Backend Architecture &amp; Ecosystem</span
+            >
+            <div class="tech-group-line"></div>
+          </div>
           <div class="tech-grid">
-            <!-- Languages & Runtimes -->
             <div class="tech-item">
               <i class="devicon-nodejs-plain colored"></i>
               <span>Node.js</span>
             </div>
-
-            <!-- Frameworks -->
             <div class="tech-item">
               <i class="devicon-express-original colored"></i>
               <span>Express.js</span>
@@ -733,8 +829,6 @@
               <i class="devicon-nextjs-plain colored"></i>
               <span>Next.js</span>
             </div>
-
-            <!-- Databases (SQL & NoSQL) -->
             <div class="tech-item">
               <i class="devicon-postgresql-plain colored"></i>
               <span>PostgreSQL</span>
@@ -755,14 +849,10 @@
               <i class="devicon-redis-plain colored"></i>
               <span>Redis</span>
             </div>
-
-            <!-- ORMs & Database Tools -->
             <div class="tech-item">
               <i class="devicon-sequelize-plain colored"></i>
               <span>Sequelize</span>
             </div>
-
-            <!-- Communication & APIs -->
             <div class="tech-item">
               <i class="devicon-graphql-plain colored"></i>
               <span>GraphQL</span>
@@ -773,17 +863,12 @@
             </div>
             <div class="tech-item">
               <i class="devicon-postman-plain colored"></i>
-
               <span>Postman</span>
             </div>
-
-            <!-- Testing -->
             <div class="tech-item">
               <i class="devicon-jest-plain colored"></i>
               <span>Jest</span>
             </div>
-
-            <!-- DevOps, Cloud & Servers -->
             <div class="tech-item">
               <i class="devicon-docker-plain colored"></i>
               <span>Docker</span>
@@ -794,7 +879,6 @@
             </div>
             <div class="tech-item">
               <i class="devicon-linux-plain"></i>
-
               <span>Linux</span>
             </div>
             <div class="tech-item">
@@ -809,21 +893,20 @@
         </div>
 
         <!-- Embedded Systems & IoT -->
-
         <div class="tech-group">
-          <div class="tech-group-title">Embedded Systems & IoT</div>
-
+          <div class="tech-group-header">
+            <span class="tech-group-title">Embedded Systems &amp; IoT</span>
+            <div class="tech-group-line"></div>
+          </div>
           <div class="tech-grid">
             <div class="tech-item">
               <i class="devicon-arduino-plain-wordmark colored"></i>
               <span>Arduino</span>
             </div>
-
             <div class="tech-item">
               <i class="devicon-raspberrypi-plain colored"></i>
               <span>Raspberry Pi</span>
             </div>
-
             <div class="tech-item">
               <i class="devicon-embeddedc-plain-wordmark"></i>
               <span>Embedded C</span>
@@ -833,7 +916,7 @@
       </section>
 
       <!-- Footer -->
-      <footer>© 2026 Moamen Abouhaty</footer>
+      <footer>&copy; 2026 Moamen Abouhaty </footer>
     </main>
 
     <script>
@@ -853,47 +936,46 @@
       `;
 
       const moonIcon = `
-        <path d="M21 12.79A9 9 0 1 1 11.21 3
-        7 7 0 0 0 21 12.79Z"></path>
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
       `;
 
-      function updateTheme() {
+      function updateThemeUI() {
         const isDark = document.body.classList.contains("dark-mode");
-
         themeIcon.innerHTML = isDark ? moonIcon : sunIcon;
-
         themeToggle.setAttribute(
           "aria-label",
-          isDark ? "Switch to light mode" : "Switch to dark mode",
+          isDark ? "Switch to day mode" : "Switch to night mode"
         );
-
-        themeToggle.setAttribute("title", isDark ? "Light mode" : "Dark mode");
+        themeToggle.setAttribute(
+          "title",
+          isDark ? "Switch to Day Mode" : "Switch to Night Mode"
+        );
       }
 
+      // Initialize Theme (Saved preference or OS preference)
       const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
 
-      if (savedTheme === "dark") {
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
         document.body.classList.add("dark-mode");
       }
+      updateThemeUI();
 
-      updateTheme();
-
+      // Toggle Day / Night Mode
       themeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
-
         const isDark = document.body.classList.contains("dark-mode");
-
-        localStorage.getItem("theme");
         localStorage.setItem("theme", isDark ? "dark" : "light");
-
-        updateTheme();
+        updateThemeUI();
       });
 
-      /* Auto-Stagger Animation Delays for Tech Items */
+      // Stagger Entrance Animation for Tech Stack Chips
       document.addEventListener("DOMContentLoaded", () => {
         const techItems = document.querySelectorAll(".tech-item");
-        const baseDelay = 0.42; // Starts right after the card appears
-        const step = 0.025; // Ultra-fast step for responsive feel
+        const baseDelay = 0.2;
+        const step = 0.022;
 
         techItems.forEach((item, index) => {
           item.style.animationDelay = `${baseDelay + index * step}s`;
