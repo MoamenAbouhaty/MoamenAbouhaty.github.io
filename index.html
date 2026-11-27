@@ -37,7 +37,8 @@
       :root {
         /* Day Mode (Crisp Teal & Slate Architectural Palette) */
         --bg-base: #f0f7f6;
-        --bg-gradient: radial-gradient(
+        --bg-gradient:
+          radial-gradient(
             circle at 15% 10%,
             rgba(20, 184, 166, 0.14) 0%,
             transparent 45%
@@ -69,7 +70,8 @@
       body.dark-mode {
         /* Night Mode (Deep Cyber-Teal & Obsidian Palette) */
         --bg-base: #061012;
-        --bg-gradient: radial-gradient(
+        --bg-gradient:
+          radial-gradient(
             circle at 20% 10%,
             rgba(45, 212, 191, 0.12) 0%,
             transparent 45%
@@ -103,7 +105,10 @@
          ========================================================= */
       body {
         min-height: 100vh;
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+        font-family:
+          "Plus Jakarta Sans",
+          -apple-system,
+          BlinkMacSystemFont,
           sans-serif;
         background-color: var(--bg-base);
         background-image: var(--bg-gradient);
@@ -125,11 +130,8 @@
         content: "";
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(
-            to right,
-            var(--grid-line) 1px,
-            transparent 1px
-          ),
+        background-image:
+          linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
           linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
         background-size: 38px 38px;
         mask-image: radial-gradient(
@@ -626,8 +628,7 @@
 
       .companies-section,
       .tech-section {
-        animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s
-          backwards;
+        animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s backwards;
       }
 
       .tech-item {
@@ -831,12 +832,8 @@
 
         <div class="companies-grid">
           <div class="company-card">
-            <img
-              src="./CISCO.jpg"
-              alt="Company 1 Logo"
-              class="company-logo"
-            />
-            <span class="company-name">Company 1</span>
+            <img src="./CISCO.jpg" alt="Company 1 Logo" class="company-logo" />
+            <span class="company-name">Cisco Networking Academy</span>
           </div>
 
           <div class="company-card">
@@ -845,7 +842,7 @@
               alt="Company 2 Logo"
               class="company-logo"
             />
-            <span class="company-name">Company 2</span>
+            <span class="company-name">FlyRank AI</span>
           </div>
 
           <div class="company-card">
@@ -854,7 +851,7 @@
               alt="Company 3 Logo"
               class="company-logo"
             />
-            <span class="company-name">Company 3</span>
+            <span class="company-name">Microchip Technology Inc.</span>
           </div>
         </div>
       </section>
@@ -1038,18 +1035,18 @@
         themeIcon.innerHTML = isDark ? moonIcon : sunIcon;
         themeToggle.setAttribute(
           "aria-label",
-          isDark ? "Switch to day mode" : "Switch to night mode"
+          isDark ? "Switch to day mode" : "Switch to night mode",
         );
         themeToggle.setAttribute(
           "title",
-          isDark ? "Switch to Day Mode" : "Switch to Night Mode"
+          isDark ? "Switch to Day Mode" : "Switch to Night Mode",
         );
       }
 
       // Initialize Theme (Saved preference or OS preference)
       const savedTheme = localStorage.getItem("theme");
       const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
+        "(prefers-color-scheme: dark)",
       ).matches;
 
       if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
