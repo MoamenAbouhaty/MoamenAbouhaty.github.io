@@ -389,8 +389,7 @@
       /* =========================================================
          6. COMPANIES SECTION
          ========================================================= */
-      .companies-section,
-      .tech-section {
+      .companies-section {
         background: var(--glass-bg);
         border: 1px solid var(--glass-border);
         border-radius: 28px;
@@ -406,7 +405,7 @@
 
       .companies-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
         gap: 16px;
       }
 
@@ -434,13 +433,14 @@
       }
 
       .company-logo {
-        width: 84px;
-        height: 84px;
+        width: 92px;
+        aspect-ratio: 1 / 1;
         object-fit: contain;
         border-radius: 14px;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.92);
         padding: 8px;
         border: 1px solid var(--chip-border);
+        display: block;
       }
 
       .company-name {
@@ -832,14 +832,18 @@
 
         <div class="companies-grid">
           <div class="company-card">
-            <img src="./CISCO.jpg" alt="Company 1 Logo" class="company-logo" />
+            <img
+              src="./CISCO.jpg"
+              alt="Cisco Networking Academy Logo"
+              class="company-logo"
+            />
             <span class="company-name">Cisco Networking Academy</span>
           </div>
 
           <div class="company-card">
             <img
               src="./FLYRANK_AI.jpg"
-              alt="Company 2 Logo"
+              alt="FlyRank AI Logo"
               class="company-logo"
             />
             <span class="company-name">FlyRank AI</span>
@@ -848,10 +852,15 @@
           <div class="company-card">
             <img
               src="./MICROCHIP.jpg"
-              alt="Company 3 Logo"
+              alt="Microchip Technology Inc. Logo"
               class="company-logo"
             />
             <span class="company-name">Microchip Technology Inc.</span>
+          </div>
+
+          <div class="company-card">
+            <img src="./Vyren.jpg" alt="Vyren Logo" class="company-logo" />
+            <span class="company-name">Vyren</span>
           </div>
         </div>
       </section>
