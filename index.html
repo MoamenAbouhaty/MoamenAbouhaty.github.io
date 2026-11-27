@@ -385,8 +385,9 @@
       }
 
       /* =========================================================
-         6. TECH STACK BENTO SECTION
+         6. COMPANIES SECTION
          ========================================================= */
+      .companies-section,
       .tech-section {
         background: var(--glass-bg);
         border: 1px solid var(--glass-border);
@@ -401,6 +402,55 @@
           box-shadow 0.4s ease;
       }
 
+      .companies-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .company-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 20px 16px;
+        background: var(--chip-bg);
+        border: 1px solid var(--chip-border);
+        border-radius: 18px;
+        transition:
+          transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.35s ease;
+      }
+
+      .company-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--chip-hover-border);
+        box-shadow: 0 12px 26px -8px rgba(13, 148, 136, 0.2);
+      }
+
+      .company-logo {
+        width: 84px;
+        height: 84px;
+        object-fit: contain;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 8px;
+        border: 1px solid var(--chip-border);
+      }
+
+      .company-name {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--text-main);
+        text-align: center;
+      }
+
+      /* =========================================================
+         7. TECH STACK BENTO SECTION
+         ========================================================= */
       .section-header {
         text-align: center;
         margin-bottom: 30px;
@@ -523,7 +573,7 @@
       }
 
       /* =========================================================
-         7. FOOTER
+         8. FOOTER
          ========================================================= */
       footer {
         text-align: center;
@@ -534,7 +584,7 @@
       }
 
       /* =========================================================
-         8. ENTRANCE & MICRO ANIMATIONS
+         9. ENTRANCE & MICRO ANIMATIONS
          ========================================================= */
       @keyframes pulseDot {
         0% {
@@ -574,6 +624,7 @@
         animation: cardReveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
+      .companies-section,
       .tech-section {
         animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.12s
           backwards;
@@ -585,7 +636,7 @@
       }
 
       /* =========================================================
-         9. RESPONSIVE DESIGN
+         10. RESPONSIVE DESIGN
          ========================================================= */
       @media (max-width: 600px) {
         body {
@@ -617,9 +668,15 @@
           width: 100%;
         }
 
+        .companies-section,
         .tech-section {
           padding: 26px 18px;
           border-radius: 22px;
+        }
+
+        .companies-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
         }
 
         .tech-grid {
@@ -762,6 +819,43 @@
             </svg>
             <span>WhatsApp</span>
           </a>
+        </div>
+      </section>
+
+      <!-- Companies Section -->
+      <section class="companies-section">
+        <div class="section-header">
+          <h2>Companies</h2>
+          <p class="subtitle">Organizations &amp; Teams Worked With</p>
+        </div>
+
+        <div class="companies-grid">
+          <div class="company-card">
+            <img
+              src="./CISCO.jpg"
+              alt="Company 1 Logo"
+              class="company-logo"
+            />
+            <span class="company-name">Company 1</span>
+          </div>
+
+          <div class="company-card">
+            <img
+              src="./FLYRANK_AI.jpg"
+              alt="Company 2 Logo"
+              class="company-logo"
+            />
+            <span class="company-name">Company 2</span>
+          </div>
+
+          <div class="company-card">
+            <img
+              src="./MICROCHIP.jpg"
+              alt="Company 3 Logo"
+              class="company-logo"
+            />
+            <span class="company-name">Company 3</span>
+          </div>
         </div>
       </section>
 
@@ -916,7 +1010,7 @@
       </section>
 
       <!-- Footer -->
-      <footer>&copy; 2026 Moamen Abouhaty </footer>
+      <footer>&copy; 2026 Moamen Abouhaty</footer>
     </main>
 
     <script>
